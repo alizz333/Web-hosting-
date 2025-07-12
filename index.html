@@ -1,244 +1,202 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alizz Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Roboto', sans-serif;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -2;
-      transform: translate(-50%, -50%);
-    }
-
-    canvas#particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-    }
-
-    .container {
-      max-width: 600px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      z-index: 1;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    h1, p {
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      background-color: #25D366;
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1.2em;
-      transition: background-color 0.3s, transform 0.3s;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .button:hover {
-      background-color: #128C7E;
-      transform: scale(1.05);
-    }
-
-    .audio-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .audio-btn {
-      padding: 10px 20px;
-      background: #444;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .audio-btn:hover {
-      background: #25D366;
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      p {
-        font-size: 1em;
-      }
-
-      .button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-
-      .audio-btn {
-        font-size: 0.9em;
-        padding: 8px 15px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALIZZ STORE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://files.catbox.moe/dgptxh.jpeg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+        }
+        .profile {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .profile img {
+            width: 100px;
+            border-radius: 50%;
+        }
+        .profile h2 {
+            margin: 10px 0 5px;
+        }
+        .profile p {
+            margin: 0 0 15px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin-top: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.8);
+            margin-top: 20px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .popup-content {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .close-btn {
+            margin-top: 15px;
+            display: block;
+            background: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <video autoplay muted loop>
-    <source src="https://files.catbox.moe/tjujd7.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+    <div class="container">
+        <div class="profile">
+            <img src="https://files.catbox.moe/nzyf6i.png" alt="Profile" />
+            <h2>ALIZZ STORE</h2>
+            <p>ASET DIGITAL TERLENGKAP DISINI</p>
+            <div class="social-icons">
+                <a href="https://wa.me/6287773020294?text=mau%20order%20bang"><img src="https://img.icons8.com/fluency/48/000000/whatsapp.png" width="35"/></a>
+                <a href="https://www.tiktok.com/@alizz.hosting"><img src="https://img.icons8.com/ios-filled/50/ffffff/tiktok--v1.png" width="35"/></a>
+            </div>
+        </div>
 
-  <canvas id="particles"></canvas>
+        <!-- Produk 1 -->
+        <div class="card">
+            <img src="https://files.catbox.moe/cnl79v.webp" onclick="openPopup(1)" />
+            <h3>1999 e-Book untuk promosi produk digital</h3>
+            <p><strike>IDR 40,000</strike> <strong>IDR 10,000</strong></p>
+            <a href="#" class="btn" onclick="openPopup(1)">Beli Sekarang</a>
+        </div>
 
-  <div class="container">
-    <h1 id="welcome-text">𝗦𝗘𝗟𝗔𝗠𝗔𝗧 𝗗𝗔𝗧𝗔𝗡𝗚 𝗗𝗜 𝗪𝗘𝗕𝗦𝗜𝗧𝗘 𝗔𝗟𝗜𝗭𝗭 𝗦𝗧𝗢𝗥𝗘</h1>
-    <p id="description-text">𝗦𝗔𝗬𝗔 𝗠𝗘𝗡𝗬𝗘𝗗𝗜𝗔𝗞𝗔𝗡 𝗣𝗥𝗢𝗗𝗨𝗞 𝗗𝗜𝗚𝗜𝗧𝗔𝗟 𝗦𝗘𝗣𝗘𝗥𝗧𝗜 𝗘𝗕𝗢𝗢𝗞 𝗗𝗔𝗡 𝗦𝗘𝗪𝗔 𝗕𝗢𝗧 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗗𝗔𝗡 𝗣𝗔𝗡𝗘𝗟 𝗥𝗨𝗡 𝗕𝗢𝗧 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗔𝗧𝗔𝗨 𝗣𝗔𝗡𝗘𝗟 𝗦𝗘𝗥𝗩𝗘𝗥 𝗠𝗜𝗡𝗜𝗖𝗥𝗔𝗙𝗧 𝗕𝗜𝗦𝗔 𝗛𝗨𝗕𝗨𝗡𝗚𝗜 𝗗𝗜 𝗕𝗔𝗪𝗔𝗛
-...</p>
-    
-    <div class="button-container">
-      <a href="https://wa.me/6287773020294" class="button">𝗛𝗨𝗕𝗨𝗡𝗚𝗜 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗞𝗘 𝟭</a>
-      <a href="https://wa.me/6282227839965" class="button">𝗛𝗨𝗕𝗨𝗡𝗚𝗜 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗞𝗘 𝟮</a>
-      <a href="https://t.me/Amelia079" class="button">𝙃𝙐𝘽𝙐𝙉𝙂𝙄 𝙏𝙀𝙇𝙀𝙂𝙍𝘼𝙈</a>
+        <!-- Produk 2 -->
+        <div class="card">
+            <img src="https://files.catbox.moe/qbknog.tmp" onclick="openPopup(2)" />
+            <h3>Panel PTERODACTYL untuk Run Bot</h3>
+            <p><strong>Mulai dari IDR 1,000</strong></p>
+            <a href="#" class="btn" onclick="openPopup(2)">Beli Sekarang</a>
+        </div>
+
+        <!-- Produk 3 -->
+        <div class="card">
+            <img src="https://files.catbox.moe/c5o56v.png" onclick="openPopup(3)" />
+            <h3>ALIZZ PANEL - Join Reseller | Partner | Owner Panel bisa di jual lagi</h3>
+            <a href="#" class="btn" onclick="openPopup(3)">Beli Sekarang</a>
+        </div>
     </div>
 
-    <div class="audio-buttons">
-      <button class="audio-btn" onclick="playAudio(1)">🔊 Putar Audio 1</button>
-      <button class="audio-btn" onclick="playAudio(2)">🔊 Putar Audio 2</button>
-      <button class="audio-btn" onclick="playAudio(3)">🔊 Putar Audio 3</button>
+    <!-- Popup Deskripsi Produk -->
+    <div class="popup" id="popup1">
+        <div class="popup-content">
+            <h2>📚 1999+ E-Book Promosi Digital</h2>
+            <p>Akses selamanya! Isi lengkap e-book kategori bisnis, pengembangan diri, dan promosi digital.</p>
+            <p>✅ Format PDF<br>✅ Cocok untuk jual ulang atau edukasi pribadi</p>
+                <a href="https://wa.me/6287773020294?text=mau%20order%20bang" class="btn">Chat Admin</a>
+            <button class="close-btn" onclick="closePopup(1)">Tutup</button>
+        </div>
     </div>
-  </div>
 
-  <audio id="audio1" src="https://files.catbox.moe/11nqkt.mp3"></audio>
-  <audio id="audio2" src="https://files.catbox.moe/4q255a.mp3"></audio>
-  <audio id="audio3" src="https://files.catbox.moe/pkc31a.mp3"></audio>
+    <div class="popup" id="popup2">
+        <div class="popup-content">
+            <h2>🚀 PANEL PTERODACTYL</h2>
+            <p>Untuk run bot 24 jam full online, bisa pilih sesuai kebutuhan:</p>
+            <pre>
+📍 1GB — 1K
+📍 2GB — 2K
+📍 3GB — 3K
+📍 4GB — 4K
+📍 5GB — 5K
+📍 6GB — 6K
+📍 7GB — 7K
+📍 8GB — 8K
+📍 9GB — 9K
+📍 10GB — 10K
+📍 UNLIMITED — 11K
+            </pre>
+            <p>🛠️ Bonus tutorial cara pasang bot di panel!</p>
+            <a href="https://wa.me/6287773020294?text=mau%20order%20bang" class="btn">Pesan via WhatsApp</a>
+            <button class="close-btn" onclick="closePopup(2)">Tutup</button>
+        </div>
+    </div>
 
-  <script>
-    // Teks delay
-    function showTextWithDelay(id, delay) {
-      setTimeout(() => {
-        document.getElementById(id).style.opacity = 1;
-      }, delay);
-    }
-    showTextWithDelay('welcome-text', 500);
-    showTextWithDelay('description-text', 1500);
+    <div class="popup" id="popup3">
+        <div class="popup-content">
+            <h2>🔧 ALIZZ PANEL</h2>
+            <p>Join jadi Reseller, Admin Panel, Partner, atau Owner Panel:</p>
+            <pre>
+👤 Reseller 10k
+- Bisa jualan panel dari 1GB sampai Unli
 
-    // Audio control
-    function playAudio(number) {
-      const audios = [null, 
-        document.getElementById("audio1"),
-        document.getElementById("audio2"),
-        document.getElementById("audio3")
-      ];
+🛡️ Admin Panel 15k
+- Bisa jual reseller
+- Bisa jual panel 1GB sampai Unli
 
-      audios.forEach((audio, i) => {
-        if (audio && i !== number) audio.pause();
-      });
+🤝 Partner 20k
+- Bisa jual reseller
+- Bisa jual admin panel
+- Bisa jual panel 1GB sampai Unli
 
-      const selected = audios[number];
-      if (selected.paused) {
-        selected.play();
-      } else {
-        selected.pause();
-      }
-    }
+👑 Owner Panel 30k
+- Bisa open partner, reseller, admin panel, panel 1GB sampai Unli
 
-    // Partikel efek
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    const colors = ["#00ffea", "#25D366", "#ffffff", "#33ff33", "#00ffff"];
+🖥️ Server aman: no delay, no rusuh (RAM VPS R32 C8)
+            </pre>
+            <a href="https://wa.me/6287773020294?text=mau%20order%20bang" class="btn">Join Sekarang</a>
+            <button class="close-btn" onclick="closePopup(3)">Tutup</button>
+        </div>
+    </div>
 
-    function createParticle(x, y) {
-      for (let i = 0; i < 10; i++) {
-        particles.push({
-          x, y,
-          size: Math.random() * 5 + 2,
-          speedX: (Math.random() - 0.5) * 4,
-          speedY: (Math.random() - 0.5) * 4,
-          color: colors[Math.floor(Math.random() * colors.length)],
-        });
-      }
-    }
+    <div class="footer">Made with ❤️ by Alizz</div>
 
-    window.addEventListener("click", (e) => {
-      createParticle(e.clientX, e.clientY);
-    });
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, index) => {
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.size *= 0.96;
-        if (p.size < 0.5) particles.splice(index, 1);
-      });
-      requestAnimationFrame(animateParticles);
-    }
-
-    animateParticles();
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  </script>
+    <script>
+        function openPopup(id) {
+            document.getElementById('popup' + id).style.display = 'block';
+        }
+        function closePopup(id) {
+            document.getElementById('popup' + id).style.display = 'none';
+        }
+    </script>
 </body>
 </html>
